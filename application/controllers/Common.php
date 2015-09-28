@@ -48,11 +48,12 @@ class Common extends CI_Controller {
 	}
 	public function wxpay(){
 		$this->load->library('WxPayApi');
-		$this->load->library('WxPayJsApiPay');
+		$this->load->library('JsApiPay');
+		
 		//①、获取用户openid
-		//$tools = $this->WxPayJsApiPay;
-		$openId = $this->wxpayssapipay->GetOpenid();
-
+		$tools = $this->jsapipay;
+		$openId = $tools->GetOpenid();
+/*
 		//②、统一下单
 		$input = new WxPayUnifiedOrder();
 		$input->SetBody("test");
@@ -72,7 +73,7 @@ class Common extends CI_Controller {
 
 		//获取共享收货地址js函数参数
 		$editAddress = $tools->GetEditAddressParameters();
-
+*/
 		//③、在支持成功回调通知中处理成功之后的事宜，见 notify.php
 		/**
 		 * 注意：
