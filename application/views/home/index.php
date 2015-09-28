@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
-<title>多方便洗车</title>
+<title>后生上门洗车</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 <link rel="stylesheet" href="/assets/css/template.css"/>
 <link rel="stylesheet" href="/assets/css/base.css"/>
@@ -92,7 +92,7 @@
 					内饰
 				</div>
 				<div class="field-input">
-					车内简洗（需在车旁等待）<input id="trim" type="checkbox">
+					<lable for="trim">车内简洗（需在车旁等待）</lable><input id="trim" type="checkbox">
 				</div>
 			</li>
 			<li class="input-field-item">
