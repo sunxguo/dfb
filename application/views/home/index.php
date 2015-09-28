@@ -142,6 +142,7 @@ function order(){
 }
 function successOrder(){
 	alert('预约成功！');
+	location.href="/common/wxpay";
 }
 </script>
 </html>
