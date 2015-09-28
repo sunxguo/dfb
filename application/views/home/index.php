@@ -129,22 +129,33 @@ function order(){
 		alert('请输入地址！');
 		return false;
 	}
-	var order = new Object();
-	order.infoType = 'order';
-	order.userid = $("#userid").val();
-	order.name = $("#name").val();
-	order.licensenumber = $("#licensenumber").val();
-	order.type = $("#type").val();
-	order.color = $("#color").val();
-	order.position = $("#position").val();
-	order.trim = $("#trim").prop('checked');
-	order.note = $("#note").val();
-	order.fee = $("#fee").val();
-	dataHandler("/common/addInfo",order,null,null,null,successOrder,false,true);
+	// var order = new Object();
+	// order.infoType = 'order';
+	// order.userid = $("#userid").val();
+	// order.name = $("#name").val();
+	// order.licensenumber = $("#licensenumber").val();
+	// order.type = $("#type").val();
+	// order.color = $("#color").val();
+	// order.position = $("#position").val();
+	// order.trim = $("#trim").prop('checked');
+	// order.note = $("#note").val();
+	// order.fee = $("#fee").val();
+	// dataHandler("/home/wxpay",order,null,null,null,successOrder,false,true);
+	var url = '/home/wxpay';
+	url+='?userid='+$("#userid").val();
+	url+='&name='+$("#name").val();
+	url+='&licensenumber='+$("#licensenumber").val();
+	url+='&type='+$("#type").val();
+	url+='&color='+$("#color").val();
+	url+='&position='+$("#position").val();
+	url+='&trim='+$("#trim").prop('checked');
+	url+='&note='+$("#note").val();
+	url+='&fee='+$("#fee").val();
+	location.href=url;
 }
-function successOrder(data){
-	alert('预约成功！');
-	location.href="/home/wxpay?ordernumber="+data.ordernumber+"&fee="+data.fee;
-}
+// function successOrder(data){
+// 	alert('预约成功！');
+// 	location.href="/home/wxpay?ordernumber="+data.ordernumber+"&fee="+data.fee;
+// }
 </script>
 </html>
