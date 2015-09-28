@@ -68,7 +68,7 @@ class Common extends CI_Controller {
 		$input->SetOpenid($openId);
 		$order = $this->wxpayapi->unifiedOrder($input);
 		echo '<font color="#f00"><b>统一下单支付单信息</b></font><br/>';
-		printf_info($order);
+		print_r($order);
 		$jsApiParameters = $tools->GetJsApiParameters($order);
 
 		//获取共享收货地址js函数参数
