@@ -1,0 +1,154 @@
+*{
+	font-family: Microsoft Yahei;
+}
+.layer{
+	width: 100%;
+}
+.tip{
+	background-color: rgb(47,202,155);
+	color: white;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	font-size: 14px;
+}
+ul.input-field{
+	width: 90%;
+	margin: 10px auto;
+	border: 1px solid #CCC;
+	border-radius: 5px;
+}
+div.order-btn{
+	width: 90%;
+	margin: 20px auto;
+	background: #00CC99;
+	color: white;
+	font-size: 15px;
+	height: 35px;
+	line-height: 35px;
+	border: none;
+	border-radius: 5px;
+	text-align: center;
+}
+div.order-btn:focus{
+	outline: none;
+}
+ul.input-field li.input-field-item{
+	border-bottom: 1px solid #CCC;
+}
+ul.input-field li:last-child{
+	border-bottom: none;
+}
+.input-field .field-icon{
+	width: 10%;
+	display: inline-block;
+	text-align: center;
+	margin-left: 2%;
+	position: relative;
+}
+.input-field .field-icon p{
+	position: absolute;
+	color: #00CC99;
+	top: 4px;
+    left: 13px;
+}
+.input-field .field-name{
+	width: 20%;
+	display: inline-block;
+	height: 45px;
+	line-height: 45px;
+	font-size: 14px;
+	color: #777;
+}
+.input-field .field-input{
+	display: inline-block;
+}
+.input-field .field-input input{
+	color: #999;
+}
+input[type=checkbox]{
+	width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+.login-tip{
+	text-align: center;
+	padding-top: 20px;
+	padding-bottom: 10px;
+	font-size: 14px;
+	color: #00CC99;
+	line-height: 2;
+}
+.message-tip{
+	text-align: center;
+	padding: 5px 0;
+	font-size: 14px;
+	color: white;
+	background: red;
+	display: none;
+}
+.login-phone-input{
+	border: 1px solid #00CC99;
+	border-radius: 5px;
+	width: 90%;
+	height: 35px;
+	margin:10px auto;
+}
+.login-phone-input img{
+	display: block;
+	float: left;
+	margin-top:6px;
+	margin-left:10px;
+}
+.login-phone-input input{
+	display: block;
+	float: left;
+	height: 30px;
+	margin-left: 10px;
+	width: 80%;
+}
+.login-auth{
+	width: 90%;
+	margin:0 auto;
+}
+.login-auth .login-auth-code{
+	border: 1px solid #00CC99;
+	border-radius: 5px;
+	height: 35px;
+	line-height: 35px;
+	padding: 0 5px;
+	width: 45%;
+	float: left;
+}
+div.getauth-btn{
+	width: 90%;
+	margin: 20px auto;
+	background: #CCC;
+	color: #888;
+	font-size: 15px;
+	height: 35px;
+	line-height: 35px;
+	border: none;
+	border-radius: 5px;
+	text-align: center;
+}
+div.getauth-btn.active{
+	background: #00CC99;
+	color: white;
+}
+.login-auth .login-btn{
+	float: right;
+	width: 40%;
+	background: #CCC;
+	color: #888;
+	font-size: 15px;
+	height: 37px;
+	line-height: 37px;
+	border: none;
+	border-radius: 5px;
+	text-align: center;
+}
+.login-auth .login-btn.active{
+	background: #00CC99;
+	color: white;
+}
