@@ -144,7 +144,7 @@ function order(){
 }
 function successOrder(data){
 	alert('预约成功！');
-	location.href="/common/wxpay?ordernumber="+data.ordernumber+"&fee="+data.fee;
+	location.href="/home/wxpay?ordernumber="+data.ordernumber+"&fee="+data.fee;
 }
 </script>
 </html>
