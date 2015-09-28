@@ -6,6 +6,7 @@ class Home extends CI_Controller {
 		parent::__construct();
 		$this->load->helper("base");
 		$this->load->library('GetData');
+		$this->load->model("dbHandler");
 	}
 
 	public function index(){
@@ -20,28 +21,29 @@ class Home extends CI_Controller {
 		$data=array();
 		$this->load->view('/home/login',$data);
 	}
-	public function wxpay(){
+	public function order(){
+		// $table="order";
+		// $info=array(
+		// 	"user"=>$_GET['userid'],
+		// 	"name"=>$_GET['name'],
+		// 	"licensenumber"=>$_GET['licensenumber'],
+		// 	"type"=>$_GET['type'],
+		// 	"color"=>$_GET['color'],
+		// 	"position"=>$_GET['position'],
+		// 	"trim"=>$_GET['trim']?1:0,
+		// 	"note"=>$_GET['note'],
+		// 	"fee"=>$_GET['fee'],
+		// 	"number"=>$this->createOrderNumber(),
+		// 	"time"=>date("Y-m-d H:i:s")
+		// );
+		// $this->dbHandler->insertData($table,$info);
+		// $result=$this->dbHandler->updateData(array('table'=>'user','where'=>array('id'=>$_GET['userid']),'data'=>array('name'=>$_GET['name'])));
+		// $this->wxpay($info['number'],$info['fee']);
+		$this->wxpay(123456,1);
+	}
+	public function wxpay($number,$fee){
 		$this->load->library('WxPayApi');
 		$this->load->library('JsApiPay');
-		
-		$table="order";
-		$info=array(
-			"user"=>$_GET['userid'],
-			"name"=>$_GET['name'],
-			"licensenumber"=>$_GET['licensenumber'],
-			"type"=>$_GET['type'],
-			"color"=>$_GET['color'],
-			"position"=>$_GET['position'],
-			"trim"=>$_GET['trim']?1:0,
-			"note"=>$_GET['note'],
-			"fee"=>$_GET['fee'],
-			"number"=>$this->createOrderNumber(),
-			"time"=>date("Y-m-d H:i:s")
-		);
-		$this->dbHandler->insertData($table,$info);
-		$result=$this->dbHandler->updateData(array('table'=>'user','where'=>array('id'=>$_GET['userid']),'data'=>array('name'=>$_GET['name'])));
-		
-
 		//①、获取用户openid
 		$tools = $this->jsapipay;
 		$openId = $tools->GetOpenid();
@@ -50,8 +52,8 @@ class Home extends CI_Controller {
 		$input = new WxPayUnifiedOrder();
 		$input->SetBody("test");
 		$input->SetAttach("test");
-		$input->SetOut_trade_no($info['number']);
-		$input->SetTotal_fee($info['fee']);
+		$input->SetOut_trade_no($number);
+		$input->SetTotal_fee($fee);
 		$input->SetTime_start(date("YmdHis"));
 		$input->SetTime_expire(date("YmdHis", time() + 600));
 		$input->SetGoods_tag("test");
