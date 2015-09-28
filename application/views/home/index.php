@@ -151,7 +151,7 @@ function order(){
 	url+='&trim='+$("#trim").prop('checked');
 	url+='&note='+$("#note").val();
 	url+='&fee='+$("#fee").val();
-	location.href=url;
+	location.href=encodeURI(url);
 }
 // function successOrder(data){
 // 	alert('预约成功！');
