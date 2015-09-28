@@ -15,6 +15,7 @@
 	</div>
 	<div class="layer">
 		<input id="userid" type="hidden" value="<?php echo $_SESSION['userid'];?>">
+		<input id="fee" type="hidden" value="1">
 		<ul class="input-field">
 			<li class="input-field-item">
 				<div class="field-icon">
@@ -138,11 +139,12 @@ function order(){
 	order.position = $("#position").val();
 	order.trim = $("#trim").prop('checked');
 	order.note = $("#note").val();
-	dataHandler("/common/addInfo",order,null,null,null,successOrder(),false,true);
+	order.fee = $("#fee").val();
+	dataHandler("/common/addInfo",order,null,null,null,successOrder,false,true);
 }
-function successOrder(){
+function successOrder(data){
 	alert('预约成功！');
-	location.href="/common/wxpay";
+	location.href="/common/wxpay?ordernumber="+data.ordernumber+"&fee="+data.fee;
 }
 </script>
 </html>
