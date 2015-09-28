@@ -92,7 +92,7 @@
 					内饰
 				</div>
 				<div class="field-input">
-					<lable for="trim">车内简洗（需在车旁等待）</lable><input id="trim" type="checkbox">
+					<label for="trim">车内简洗（需在车旁等待）</label><input id="trim" type="checkbox">
 				</div>
 			</li>
 			<li class="input-field-item">

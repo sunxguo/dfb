@@ -15,7 +15,7 @@
 	</div>
 	<div class="layer login-tip">
 		多方变到家承诺严格保密车主隐私<br>
-		秉承全心全意为人民服务的宗旨
+		多方变到家秉承全心全意为人民服务的宗旨
 	</div>
 	<div class="layer">
 		<div class="login-phone-input">

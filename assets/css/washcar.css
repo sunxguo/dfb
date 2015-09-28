@@ -54,6 +54,7 @@ ul.input-field li:last-child{
 	color: #00CC99;
 	top: 4px;
     left: 13px;
+    font-weight: 600;
 }
 .input-field .field-name{
 	width: 20%;
