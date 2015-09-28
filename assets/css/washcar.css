@@ -1,6 +1,9 @@
 *{
 	font-family: Microsoft Yahei;
 }
+input{
+	border:none;
+}
 .layer{
 	width: 100%;
 }
@@ -67,8 +70,8 @@ ul.input-field li:last-child{
 	color: #999;
 }
 input[type=checkbox]{
-	width: 20px;
-    height: 20px;
+	width: 10px;
+    height: 10px;
     vertical-align: middle;
 }
 .login-tip{
@@ -103,7 +106,7 @@ input[type=checkbox]{
 .login-phone-input input{
 	display: block;
 	float: left;
-	height: 30px;
+	height: 35px;
 	margin-left: 10px;
 	width: 80%;
 }
