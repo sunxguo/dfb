@@ -14,7 +14,7 @@
 		预计今天<span id="estimateTime">--</span>点完成洗车
 	</div>
 	<div class="layer">
-		<form action="/home/wxpay" onsubmit="return checkOrder();" method="post" enctype="multipart/form-data">
+		<form action="/home/order" onsubmit="return checkOrder();" method="post" enctype="multipart/form-data">
 			<input id="userid" name="userid" type="hidden" value="<?php echo $_SESSION['userid'];?>">
 			<input id="fee" name="fee" type="hidden" value="1">
 			<ul class="input-field">

@@ -22,24 +22,24 @@ class Home extends CI_Controller {
 		$this->load->view('/home/login',$data);
 	}
 	public function order(){
-		$table="order";
-		$info=array(
-			"user"=>$_POST['userid'],
-			"name"=>$_POST['name'],
-			"licensenumber"=>$_POST['licensenumber'],
-			"type"=>$_POST['type'],
-			"color"=>$_POST['color'],
-			"position"=>$_POST['position'],
-			// "trim"=>$_POST['trim']?1:0,
-			"note"=>$_POST['note'],
-			"fee"=>$_POST['fee'],
-			"number"=>$this->createOrderNumber(),
-			"time"=>date("Y-m-d H:i:s")
-		);
-		$this->dbHandler->insertData($table,$info);
-		$result=$this->dbHandler->updateData(array('table'=>'user','where'=>array('id'=>$_POST['userid']),'data'=>array('name'=>$_POST['name'])));
+		// $table="order";
+		// $info=array(
+		// 	"user"=>$_POST['userid'],
+		// 	"name"=>$_POST['name'],
+		// 	"licensenumber"=>$_POST['licensenumber'],
+		// 	"type"=>$_POST['type'],
+		// 	"color"=>$_POST['color'],
+		// 	"position"=>$_POST['position'],
+		// 	// "trim"=>$_POST['trim']?1:0,
+		// 	"note"=>$_POST['note'],
+		// 	"fee"=>$_POST['fee'],
+		// 	"number"=>$this->createOrderNumber(),
+		// 	"time"=>date("Y-m-d H:i:s")
+		// );
+		// $this->dbHandler->insertData($table,$info);
+		// $result=$this->dbHandlerer->updateData(array('table'=>'user','where'=>array('id'=>$_POST['userid']),'data'=>array('name'=>$_POST['name'])));
 		//$this->wxpay($info['number'],$info['fee']);
-		$this->wxpay(123456,1);
+		$this->wxpay();
 	}
 	public function wxpay(){
 		$this->load->library('WxPayApi');
