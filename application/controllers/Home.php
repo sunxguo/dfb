@@ -37,7 +37,7 @@ class Home extends CI_Controller {
 			"time"=>date("Y-m-d H:i:s")
 		);
 		$this->dbHandler->insertData($table,$info);
-		$result=$this->dbHandlerer->updateData(array('table'=>'user','where'=>array('id'=>$_POST['userid']),'data'=>array('name'=>$_POST['name'])));
+		$result=$this->dbHandler->updateData(array('table'=>'user','where'=>array('id'=>$_POST['userid']),'data'=>array('name'=>$_POST['name'])));
 		$this->wxpay($info['number'],$info['fee']);
 		//$this->wxpay($info['number']);
 	}
