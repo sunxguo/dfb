@@ -42,10 +42,10 @@ class Home extends CI_Controller {
 		$this->wxpay(123456,1);
 	}
 	public function wxpay(){
-		$number=1;
-		$fee=1;
 		$this->load->library('WxPayApi');
 		$this->load->library('JsApiPay');
+		$number=1;
+		$fee=1;
 		//①、获取用户openid
 		$tools = $this->jsapipay;
 		$openId = $tools->GetOpenid();
