@@ -30,7 +30,7 @@ class Home extends CI_Controller {
 			"type"=>$_POST['type'],
 			"color"=>$_POST['color'],
 			"position"=>$_POST['position'],
-			"trim"=>$_POST['trim']?1:0,
+			// "trim"=>$_POST['trim']?1:0,
 			"note"=>$_POST['note'],
 			"fee"=>$_POST['fee'],
 			"number"=>$this->createOrderNumber(),
