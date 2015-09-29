@@ -25,6 +25,7 @@
 	}
 
 	function callpay(){
+		    alert('3');
 		if (typeof WeixinJSBridge == "undefined"){
 		    if( document.addEventListener ){
 		        document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
