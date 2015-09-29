@@ -22,6 +22,8 @@ class Home extends CI_Controller {
 		$this->load->view('/home/login',$data);
 	}
 	public function order(){
+		print_r($_POST);
+		print_r($_GET);
 		$table="order";
 		$info=array(
 			"user"=>$_POST['userid'],
