@@ -22,8 +22,6 @@ class Home extends CI_Controller {
 		$this->load->view('/home/login',$data);
 	}
 	public function order(){
-		print_r($_POST);
-		print_r($_GET);
 		$table="order";
 		$info=array(
 			"user"=>$_POST['userid'],
@@ -40,7 +38,7 @@ class Home extends CI_Controller {
 		);
 		$this->dbHandler->insertData($table,$info);
 		$result=$this->dbHandler->updateData(array('table'=>'user','where'=>array('id'=>$_POST['userid']),'data'=>array('name'=>$_POST['name'])));
-		$this->wxpay($info['number'],$info['fee']);
+		//$this->wxpay($info['number'],$info['fee']);
 		// $this->wxpay(123456,1);
 	}
 	public function wxpay($number,$fee){
