@@ -22,23 +22,36 @@ class Home extends CI_Controller {
 		$this->load->view('/home/login',$data);
 	}
 	public function order(){
-		$table="order";
-		$info=array(
-			"user"=>$_POST['userid'],
-			"name"=>$_POST['name'],
-			"licensenumber"=>$_POST['licensenumber'],
-			"type"=>$_POST['type'],
-			"color"=>$_POST['color'],
-			"position"=>$_POST['position'],
-			// "trim"=>$_POST['trim']?1:0,
-			"note"=>$_POST['note'],
-			"fee"=>$_POST['fee'],
-			"number"=>$this->createOrderNumber(),
-			"time"=>date("Y-m-d H:i:s")
-		);
-		$this->dbHandler->insertData($table,$info);
-		$result=$this->dbHandler->updateData(array('table'=>'user','where'=>array('id'=>$_POST['userid']),'data'=>array('name'=>$_POST['name'])));
-		$this->wxpay($info['number'],$info['fee']);
+		if(isset($_POST['userid'])){
+			// $_SESSION['user']=$_POST['userid'];
+			// $_SESSION['name']=$_POST['name'];
+			// $_SESSION['licensenumber']=$_POST['licensenumber'];
+			// $_SESSION['type']=$_POST['type'];
+			// $_SESSION['color']=$_POST['color'];
+			// $_SESSION['position']=$_POST['position'];
+			// $_SESSION['note']=$_POST['note'];
+			$_SESSION['fee']=$_POST['fee'];
+			$_SESSION['number']=$this->createOrderNumber();
+			// $_SESSION['time']=date("Y-m-d H:i:s");
+			$table="order";
+			$info=array(
+				"user"=>$_POST['userid'],
+				"name"=>$_POST['name'],
+				"licensenumber"=>$_POST['licensenumber'],
+				"type"=>$_POST['type'],
+				"color"=>$_POST['color'],
+				"position"=>$_POST['position'],
+				// "trim"=>$_POST['trim']?1:0,
+				"note"=>$_POST['note'],
+				"fee"=>$_POST['fee'],
+				"number"=>$_SESSION['number'],
+				"time"=>date("Y-m-d H:i:s")
+			);
+			$this->dbHandler->insertData($table,$info);
+			$result=$this->dbHandler->updateData(array('table'=>'user','where'=>array('id'=>$_POST['userid']),'data'=>array('name'=>$_POST['name'])));
+			
+		}
+		$this->wxpay($_SESSION['number'],$_SESSION['fee']);
 		//$this->wxpay($info['number']);
 	}
 	public function wxpay($number,$fee){
