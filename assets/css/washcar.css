@@ -21,7 +21,8 @@ ul.input-field{
 	border: 1px solid #CCC;
 	border-radius: 5px;
 }
-div.order-btn{
+input.order-btn{
+	display: block;
 	width: 90%;
 	margin: 20px auto;
 	background: #00CC99;
@@ -33,7 +34,7 @@ div.order-btn{
 	border-radius: 5px;
 	text-align: center;
 }
-div.order-btn:focus{
+input.order-btn:focus{
 	outline: none;
 }
 ul.input-field li.input-field-item{

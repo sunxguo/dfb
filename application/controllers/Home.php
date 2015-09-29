@@ -22,24 +22,24 @@ class Home extends CI_Controller {
 		$this->load->view('/home/login',$data);
 	}
 	public function order(){
-		// $table="order";
-		// $info=array(
-		// 	"user"=>$_GET['userid'],
-		// 	"name"=>$_GET['name'],
-		// 	"licensenumber"=>$_GET['licensenumber'],
-		// 	"type"=>$_GET['type'],
-		// 	"color"=>$_GET['color'],
-		// 	"position"=>$_GET['position'],
-		// 	"trim"=>$_GET['trim']?1:0,
-		// 	"note"=>$_GET['note'],
-		// 	"fee"=>$_GET['fee'],
-		// 	"number"=>$this->createOrderNumber(),
-		// 	"time"=>date("Y-m-d H:i:s")
-		// );
-		// $this->dbHandler->insertData($table,$info);
-		// $result=$this->dbHandler->updateData(array('table'=>'user','where'=>array('id'=>$_GET['userid']),'data'=>array('name'=>$_GET['name'])));
-		// $this->wxpay($info['number'],$info['fee']);
-		$this->wxpay(123456,1);
+		$table="order";
+		$info=array(
+			"user"=>$_POST['userid'],
+			"name"=>$_POST['name'],
+			"licensenumber"=>$_POST['licensenumber'],
+			"type"=>$_POST['type'],
+			"color"=>$_POST['color'],
+			"position"=>$_POST['position'],
+			"trim"=>$_POST['trim']?1:0,
+			"note"=>$_POST['note'],
+			"fee"=>$_POST['fee'],
+			"number"=>$this->createOrderNumber(),
+			"time"=>date("Y-m-d H:i:s")
+		);
+		$this->dbHandler->insertData($table,$info);
+		$result=$this->dbHandler->updateData(array('table'=>'user','where'=>array('id'=>$_POST['userid']),'data'=>array('name'=>$_POST['name'])));
+		$this->wxpay($info['number'],$info['fee']);
+		// $this->wxpay(123456,1);
 	}
 	public function wxpay($number,$fee){
 		$this->load->library('WxPayApi');
@@ -66,7 +66,7 @@ class Home extends CI_Controller {
 		$jsApiParameters = $tools->GetJsApiParameters($order);
 
 		//获取共享收货地址js函数参数
-		$editAddress = $tools->GetEditAddressParameters();
+		//$editAddress = $tools->GetEditAddressParameters();
 
 		//③、在支持成功回调通知中处理成功之后的事宜，见 notify.php
 		/**
@@ -75,7 +75,7 @@ class Home extends CI_Controller {
 		 * 2、jsapi支付时需要填入用户openid，WxPay.JsApiPay.php中有获取openid流程 （文档可以参考微信公众平台“网页授权接口”，
 		 * 参考http://mp.weixin.qq.com/wiki/17/c0f37d5704f0b64713d5d2c37b468d75.html）
 		 */
-		$data=array('editAddress'=>$editAddress,'jsApiParameters'=>$jsApiParameters,'fee'=>$fee);
+		$data=array('jsApiParameters'=>$jsApiParameters,'fee'=>$fee);
 		$this->load->view('/home/wxpay',$data);
 	}
 	public function createOrderNumber(){

@@ -14,9 +14,9 @@
 		预计今天<span id="estimateTime">--</span>点完成洗车
 	</div>
 	<div class="layer">
-		<form action="/home/order" method="post" enctype="multipart/form-data">
-			<input id="userid" type="hidden" value="<?php echo $_SESSION['userid'];?>">
-			<input id="fee" type="hidden" value="1">
+		<form action="/home/order" onsubmit="return checkOrder();" method="post" enctype="multipart/form-data">
+			<input id="userid" name="userid" type="hidden" value="<?php echo $_SESSION['userid'];?>">
+			<input id="fee" name="fee" type="hidden" value="1">
 			<ul class="input-field">
 				<li class="input-field-item">
 					<div class="field-icon">
@@ -26,7 +26,7 @@
 						手机号
 					</div>
 					<div class="field-input">
-						<input id="phone" type="text" value="<?php echo $_SESSION['phone'];?>" disabled>
+						<input id="phone" name="phone" type="text" value="<?php echo $_SESSION['phone'];?>" disabled>
 					</div>
 				</li>
 				<li class="input-field-item">
@@ -37,7 +37,7 @@
 						称呼
 					</div>
 					<div class="field-input">
-						<input id="name" value="<?php echo $_SESSION['name'];?>" placeholder="请输入称呼" type="text">
+						<input id="name" name="name" value="<?php echo $_SESSION['name'];?>" placeholder="请输入称呼" type="text">
 					</div>
 				</li>
 				<li class="input-field-item">
@@ -49,7 +49,7 @@
 						车牌号
 					</div>
 					<div class="field-input">
-						<input id="licensenumber" placeholder="请输入车牌号" type="text">
+						<input id="licensenumber" name="licensenumber" placeholder="请输入车牌号" type="text">
 					</div>
 				</li>
 				<li class="input-field-item">
@@ -60,7 +60,7 @@
 						车型
 					</div>
 					<div class="field-input">
-						<input id="type" placeholder="请输入车型" type="text">
+						<input id="type" name="type" placeholder="请输入车型" type="text">
 					</div>
 				</li>
 				<li class="input-field-item">
@@ -72,7 +72,7 @@
 						颜色
 					</div>
 					<div class="field-input">
-						<input id="color" placeholder="请输入颜色" type="text">
+						<input id="color" name="color" placeholder="请输入颜色" type="text">
 					</div>
 				</li>
 				<li class="input-field-item">
@@ -83,7 +83,7 @@
 						位置
 					</div>
 					<div class="field-input">
-						<input id="position" placeholder="请输入地址" type="text">
+						<input id="position" name="position" placeholder="请输入地址" type="text">
 					</div>
 				</li>
 				<li class="input-field-item">
@@ -94,7 +94,7 @@
 						内饰
 					</div>
 					<div class="field-input">
-						<label for="trim">车内简洗（需在车旁等待）</label><input id="trim" type="checkbox">
+						<label for="trim">车内简洗（需在车旁等待）</label><input id="trim" name="trim" type="checkbox">
 					</div>
 				</li>
 				<li class="input-field-item">
@@ -105,12 +105,12 @@
 						备注
 					</div>
 					<div class="field-input">
-						<input id="note" placeholder="请输入备注" type="text">
+						<input id="note" name="note" placeholder="请输入备注" type="text">
 					</div>
 				</li>
-			</form>
-		</ul>
-		<div class="order-btn" onclick="order();">立即下单</div>
+			</ul>
+			<input type="submit" value="立即下单" class="order-btn">
+		</form>
 	</div>
 </body>
 <script type="text/javascript">
@@ -118,7 +118,7 @@ $(document).ready(function(){
 	var myDate = new Date();
 	$("#estimateTime").text(myDate.getHours()+3);
 });
-function order(){
+function checkOrder(){
 	if($("#name").val().length<1){
 		alert('请输入称呼！');
 		return false;
@@ -131,6 +131,7 @@ function order(){
 		alert('请输入地址！');
 		return false;
 	}
+	return true;
 	// var order = new Object();
 	// order.infoType = 'order';
 	// order.userid = $("#userid").val();
@@ -143,7 +144,8 @@ function order(){
 	// order.note = $("#note").val();
 	// order.fee = $("#fee").val();
 	// dataHandler("/home/wxpay",order,null,null,null,successOrder,false,true);
-	var url = '/home/order';
+
+	// var url = '/home/order';
 	// url+='?userid='+$("#userid").val();
 	// url+='&name='+$("#name").val();
 	// url+='&licensenumber='+$("#licensenumber").val();
@@ -153,7 +155,7 @@ function order(){
 	// url+='&trim='+$("#trim").prop('checked');
 	// url+='&note='+$("#note").val();
 	// url+='&fee='+$("#fee").val();
-	location.href=url;
+	// location.href=url;
 	// alert(url);
 }
 // function successOrder(data){
