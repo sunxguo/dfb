@@ -42,6 +42,8 @@ class Home extends CI_Controller {
 		$this->wxpay(123456,1);
 	}
 	public function wxpay(){
+		$number=1;
+		$fee=1;
 		$this->load->library('WxPayApi');
 		$this->load->library('JsApiPay');
 		//①、获取用户openid
@@ -52,8 +54,8 @@ class Home extends CI_Controller {
 		$input = new WxPayUnifiedOrder();
 		$input->SetBody("test");
 		$input->SetAttach("test");
-		$input->SetOut_trade_no(87654321);
-		$input->SetTotal_fee(1);
+		$input->SetOut_trade_no($number);
+		$input->SetTotal_fee($fee);
 		$input->SetTime_start(date("YmdHis"));
 		$input->SetTime_expire(date("YmdHis", time() + 600));
 		$input->SetGoods_tag("test");
