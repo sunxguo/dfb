@@ -39,7 +39,7 @@ class Home extends CI_Controller {
 		$this->dbHandler->insertData($table,$info);
 		$result=$this->dbHandler->updateData(array('table'=>'user','where'=>array('id'=>$_POST['userid']),'data'=>array('name'=>$_POST['name'])));
 		//$this->wxpay($info['number'],$info['fee']);
-		// $this->wxpay(123456,1);
+		 $this->wxpay(123456,1);
 	}
 	public function wxpay($number,$fee){
 		$this->load->library('WxPayApi');
