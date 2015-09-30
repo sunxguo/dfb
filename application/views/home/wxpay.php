@@ -25,7 +25,7 @@
 	}
 
 	function callpay(){
-		    alert('3');
+		alert('3');
 		if (typeof WeixinJSBridge == "undefined"){
 		    if( document.addEventListener ){
 		        document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
@@ -75,3 +75,4 @@
 		<button style="width:210px; height:50px; border-radius: 15px;background-color:#FE6714; border:0px #FE6714 solid; cursor: pointer;  color:white;  font-size:16px;" type="button" onclick="callpay()" >立即支付</button>
 	</div>
 </body>
+</html>
