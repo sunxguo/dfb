@@ -1,102 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>地理位置测试</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-    <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.3"></script>
-    <script type="text/javascript" src="http://developer.baidu.com/map/jsdemo/demo/convertor.js"></script>
-    <script type="text/javascript">
-        var map;
-        var gpsPoint;
-        var baiduPoint;
-        var gpsAddress;
-        var baiduAddress;
-
-        function getLocation() {
-            //根据IP获取城市
-            var myCity = new BMap.LocalCity();
-            myCity.get(getCityByIP);
-
-            //获取GPS坐标
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showMap, handleError, { enableHighAccuracy: true, maximumAge: 1000 });
-            } else {
-                alert("您的浏览器不支持使用HTML 5来获取地理位置服务");
-            }
-        }
-      
-        function showMap(value) {
-            var longitude = value.coords.longitude;
-            var latitude = value.coords.latitude;
-            map = new BMap.Map("map");
-            //alert("坐标经度为：" + latitude + "， 纬度为：" + longitude );
-            gpsPoint = new BMap.Point(longitude, latitude);    // 创建点坐标
-            map.centerAndZoom(gpsPoint, 15);
-
-            //根据坐标逆解析地址
-            var geoc = new BMap.Geocoder();
-            geoc.getLocation(gpsPoint, getCityByCoordinate);
-
-            BMap.Convertor.translate(gpsPoint, 0, translateCallback);
-        }
-
-        translateCallback = function (point) {
-            baiduPoint = point;
-            var geoc = new BMap.Geocoder();
-            geoc.getLocation(baiduPoint, getCityByBaiduCoordinate);
-        }
-
-        function getCityByCoordinate(rs) {
-            gpsAddress = rs.addressComponents;
-            var address = "GPS标注：" + gpsAddress.province + "," + gpsAddress.city + "," + gpsAddress.district + "," + gpsAddress.street + "," + gpsAddress.streetNumber;
-            var marker = new BMap.Marker(gpsPoint);  // 创建标注
-            map.addOverlay(marker);              // 将标注添加到地图中
-            var labelgps = new BMap.Label(address, { offset: new BMap.Size(20, -10) });
-            marker.setLabel(labelgps); //添加GPS标注    
-        }
-
-        function getCityByBaiduCoordinate(rs) {
-            baiduAddress = rs.addressComponents;
-            var address = "百度标注：" + baiduAddress.province + "," + baiduAddress.city + "," + baiduAddress.district + "," + baiduAddress.street + "," + baiduAddress.streetNumber;
-            var marker = new BMap.Marker(baiduPoint);  // 创建标注
-            map.addOverlay(marker);              // 将标注添加到地图中
-            var labelbaidu = new BMap.Label(address, { offset: new BMap.Size(20, -10) });
-            marker.setLabel(labelbaidu); //添加百度标注  
-        }
-
-        //根据IP获取城市
-        function getCityByIP(rs) {
-            var cityName = rs.name;
-            alert("根据IP定位您所在的城市为:" + cityName);
-        }
-
-        function handleError(value) {
-            switch (value.code) {
-                case 1:
-                    alert("位置服务被拒绝");
-                    break;
-                case 2:
-                    alert("暂时获取不到位置信息");
-                    break;
-                case 3:
-                    alert("获取信息超时");
-                    break;
-                case 4:
-                    alert("未知错误");
-                    break;
-            }
-        }
-
-        function init() {
-            getLocation();
-        }
-
-        window.onload = init;
-
-    </script>
+    <style type="text/css">
+        body, html {width: 100%;height: 100%;margin:0;font-family:"微软雅黑";}
+        #allmap{width:100%;height:500px;}
+        p{margin-left:5px; font-size:14px;}
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=您的密钥"></script>
+    <title>移动地图</title>
 </head>
 <body>
-    <div id="map" style="width:100%;height:100%;"></div>
+    <div id="allmap"></div>
+    <p>初始化地图，中心点为（116.4035,39.915），缩放级别为8的北京市地图，2秒后，通过改变中心点坐标，地图平移到广州</p>
 </body>
 </html>
+<script type="text/javascript">
+    // 百度地图API功能
+    var map = new BMap.Map("allmap");       
+    map.centerAndZoom(new BMap.Point(116.4035,39.915),8); 
+    setTimeout(function(){
+        map.panTo(new BMap.Point(113.262232,23.154345));   //两秒后移动到广州
+    }, 2000);
+</script>
