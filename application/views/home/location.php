@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>地理位置测试</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.3"></script>
     <script type="text/javascript" src="http://developer.baidu.com/map/jsdemo/demo/convertor.js"></script>
     <script type="text/javascript">
@@ -96,6 +97,6 @@
     </script>
 </head>
 <body>
-    <div id="map" style="width:600px;height:600px;"></div>
+    <div id="map" style="width:100%;height:100%;"></div>
 </body>
 </html>
