@@ -10,6 +10,9 @@
 </head>
 <body>
     <div id="allmap"></div>
+    <div class="map-bottom">
+        <button class="position-btn">确定位置</button>
+    </div>
 </body>
 </html>
 <script type="text/javascript">

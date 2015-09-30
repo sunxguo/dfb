@@ -33,6 +33,7 @@ input.order-btn{
 	border: none;
 	border-radius: 5px;
 	text-align: center;
+	-webkit-appearance: none;
 }
 input.order-btn:focus{
 	outline: none;
@@ -157,4 +158,22 @@ div.getauth-btn.active{
 .login-auth .login-btn.active{
 	background: #00CC99;
 	color: white;
+}
+.map-bottom{
+	background: white;
+	height: 50px;
+	width: 100%;
+}
+.map-bottom .position-btn{
+	display: block;
+	width: 90%;
+	margin: 20px auto;
+	background: #00CC99;
+	color: white;
+	font-size: 15px;
+	height: 35px;
+	line-height: 35px;
+	border: none;
+	border-radius: 5px;
+	text-align: center;
 }
