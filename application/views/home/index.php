@@ -83,7 +83,7 @@
 						位置
 					</div>
 					<div class="field-input">
-						<input id="position" name="position" placeholder="请输入地址" type="text">
+						<input id="position" name="position" placeholder="请输入地址" type="text" onclick="window.open('/home/location');">
 					</div>
 				</li>
 				<li class="input-field-item">

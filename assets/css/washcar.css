@@ -160,9 +160,11 @@ div.getauth-btn.active{
 	color: white;
 }
 .map-bottom{
-	background: white;
+	position: absolute;
+	/*background: white;*/
 	height: 50px;
 	width: 100%;
+	bottom: 0px;
 }
 .map-bottom .position-btn{
 	display: block;
