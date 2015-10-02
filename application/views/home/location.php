@@ -31,6 +31,21 @@
             map.addOverlay(mk);
             map.panTo(r.point);
             //alert('您的位置：'+r.point.lng+','+r.point.lat);
+            var point = new BMap.Point(r.point.lng, r.point.lat);    // 创建点坐标
+            //map.centerAndZoom(point,15);                     // 
+            //map.enableScrollWheelZoom(); 
+            var gc = new BMap.Geocoder();
+            gc.getLocation(point, function(rs){
+                var addComp = rs.addressComponents;
+                var address=addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street + ", " + addComp.streetNumber;
+                // for (var i in addComp){
+                //     alert(i);            // 输出属性名：  attribute，method
+                //    // alert(addComp[i])        // 输出属性的值：1和函数的内容
+                // }
+                alert(address);
+                window.opener.document.getElementById('position').value=address;
+            });
+            window.close();
         }
         else {
             alert('failed'+this.getStatus());
@@ -56,15 +71,18 @@
     function setPosition(position){
         var lat=position.coords.latitude;
         var lon=position.coords.longitude;
+        alert(lat);
         //var map = new BMap.Map("container");            // 创建Map实例
         var point = new BMap.Point(lon, lat);    // 创建点坐标
         //map.centerAndZoom(point,15);                     // 
         //map.enableScrollWheelZoom(); 
         var gc = new BMap.Geocoder();    
         gc.getLocation(point, function(rs){
-           var addComp = rs.addressComponents;
-           var address=addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street;
+            var addComp = rs.addressComponents;
+            var address=addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street;
+            alert(address);
+            window.opener.document.getElementById('position').value=address;
         });
-        window.opener.document.getElementById('position').value=address;
+        window.close();
     }
 </script>
