@@ -27,7 +27,7 @@ class Home extends CI_Controller {
 		$input = new WxPayUnifiedOrder();
 		$input->SetBody("test");
 		$input->SetAttach("test");
-		$input->SetOut_trade_no(1217752501201407033233368018);
+	//	$input->SetOut_trade_no(1217752501201407033233368018);
 		$input->SetTotal_fee(1);
 		$input->SetTime_start(date("YmdHis"));
 		$input->SetTime_expire(date("YmdHis", time() + 600));
