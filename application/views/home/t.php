@@ -3,7 +3,11 @@
     <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/> 
     <title>微信安全支付</title>
-
+	<style type="text/css">
+		*{
+			font-family: Microsoft Yahei;
+		}
+	</style>
 	<script type="text/javascript">
 
 		//调用微信JS api 支付
@@ -36,11 +40,10 @@
 	</script>
 </head>
 <body>
-	<div style="text-align:center;padding:6px 0;">
+	<div style="text-align:center;padding:50px 0 20px 0;">
 		所需支付金额：
 		<p>￥ <?php echo ($fee/100).'.00';?></p>
 	</div>
-	</br></br></br></br>
 	<div align="center">
 		<button style="width:90%; height:40px;line-height:40px; background-color:#FE6714; border:0px #FE6714 solid; cursor: pointer;  color:white;  font-size:18px;" type="button" onclick="callpay()" >立即支付</button>
 	</div>
