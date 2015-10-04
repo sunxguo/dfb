@@ -35,6 +35,10 @@
 	</script>
 </head>
 <body>
+	<div style="text-align:center;padding:6px 0;">
+		所需支付金额：
+		<p>￥ <?php echo $fee;?></p>
+	</div>
 	</br></br></br></br>
 	<div align="center">
 		<button style="width:210px; height:30px; background-color:#FE6714; border:0px #FE6714 solid; cursor: pointer;  color:white;  font-size:16px;" type="button" onclick="callpay()" >下单</button>

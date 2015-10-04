@@ -84,7 +84,7 @@ class Home extends CI_Controller {
 	$jsApi->setPrepayId($prepay_id);
 
 	$jsApiParameters = $jsApi->getParameters();
-	$data=array('jsApiParameters'=>$jsApiParameters,'fee'=>1);
+	$data=array('jsApiParameters'=>$jsApiParameters,'fee'=>$_SESSION['fee']);
 	$this->load->view('/home/t',$data);
 	}
 	public function test2(){
