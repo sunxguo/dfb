@@ -17,6 +17,10 @@ class Home extends CI_Controller {
 		// }else{
 		// 	$this->load->view('/home/login',$data);
 		// }
+		$this->test();
+	}
+	public function test(){
+
 		$this->load->library('WxPayApi');
 		$this->load->library('JsApiPay');
 		//①、获取用户openid
