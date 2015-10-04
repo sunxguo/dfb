@@ -9,6 +9,7 @@
         body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
     </style>
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=N9eiFDikvcAKMBa3cCUxcNwH"></script>
+<script src="/assets/js/jquery-2.1.4.min.js" type="text/javascript"></script>
     <title>浏览器定位</title>
 </head>
 <body>
@@ -42,9 +43,13 @@
                 //     alert(i);            // 输出属性名：  attribute，method
                 //    // alert(addComp[i])        // 输出属性的值：1和函数的内容
                 // }
-                alert(address);
+               // alert(address);
                 //window.opener.document.getElementById('position').value=address;
                 //window.close();
+                //alert($("#orderform",parent.document));
+                $("#position",parent.document).val(address);
+                $("#orderform",parent.document).show();
+                $("#allmap",parent.document).hide();
             });
         }
         else {
