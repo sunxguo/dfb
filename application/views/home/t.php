@@ -40,12 +40,12 @@
 	</script>
 </head>
 <body>
-	<div style="text-align:center;padding:50px 0 20px 0;">
+	<div style="text-align:center;padding:50px 0 20px 0;font-family: Microsoft Yahei;">
 		所需支付金额：
 		<p>￥ <?php echo ($fee/100).'.00';?></p>
 	</div>
 	<div align="center">
-		<button style="width:90%; height:40px;line-height:40px; background-color:#FE6714; border:0px #FE6714 solid; cursor: pointer;  color:white;  font-size:18px;" type="button" onclick="callpay()" >立即支付</button>
+		<button style="font-family: Microsoft Yahei;width:90%; height:40px;line-height:40px; background-color:#FE6714; border:0px #FE6714 solid; cursor: pointer;  color:white;  font-size:18px;" type="button" onclick="callpay()" >立即支付</button>
 	</div>
 </body>
 </html>
