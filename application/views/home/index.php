@@ -2,14 +2,16 @@
 <head>
 <meta charset="UTF-8">
 <title>后生上门洗车</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 <link rel="stylesheet" href="/assets/css/template.css"/>
 <link rel="stylesheet" href="/assets/css/base.css"/>
 <link rel="stylesheet" href="/assets/css/washcar.css"/>
 <script src="/assets/js/jquery-2.1.4.min.js" type="text/javascript"></script>
 <script src="/assets/js/common.js" type="text/javascript"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=N9eiFDikvcAKMBa3cCUxcNwH"></script>
 </head>
 <body>
+<div id="orderform">
 	<div class="layer tip">
 		预计今天<span id="estimateTime">--</span>点完成洗车
 	</div>
@@ -83,7 +85,7 @@
 						位置
 					</div>
 					<div class="field-input">
-						<input id="position" name="position" placeholder="请输入地址" type="text" onclick="window.open('/home/location');">
+						<input id="position" name="position" placeholder="请输入地址" type="text" onclick="chooseMap();">
 					</div>
 				</li>
 				<li class="input-field-item">
@@ -112,6 +114,10 @@
 			<input type="submit" value="立即下单" class="order-btn">
 		</form>
 	</div>
+</div>
+	<iframe id="allmap" src="/home/location" style="display:none;">
+		
+	</iframe>
 </body>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -162,5 +168,41 @@ function checkOrder(){
 // 	alert('预约成功！');
 // 	location.href="/home/wxpay?ordernumber="+data.ordernumber+"&fee="+data.fee;
 // }
+function chooseMap(){
+	$('#orderform').hide();$('#allmap').show();
+    // // 百度地图API功能
+    // var map = new BMap.Map("allmap");
+    // var point = new BMap.Point(116.331398,39.897445);
+    // map.centerAndZoom(point,12);
+
+    // var geolocation = new BMap.Geolocation();
+    // geolocation.getCurrentPosition(function(r){
+    //     if(this.getStatus() == BMAP_STATUS_SUCCESS){
+    //         var mk = new BMap.Marker(r.point);
+    //         map.addOverlay(mk);
+    //         map.panTo(r.point);
+    //         //alert('您的位置：'+r.point.lng+','+r.point.lat);
+    //         var point = new BMap.Point(r.point.lng, r.point.lat);    // 创建点坐标
+    //         //map.centerAndZoom(point,15);                     // 
+    //         //map.enableScrollWheelZoom(); 
+    //         var gc = new BMap.Geocoder();
+    //         gc.getLocation(point, function(rs){
+    //             var addComp = rs.addressComponents;
+    //             var address=addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street + ", " + addComp.streetNumber;
+    //             // for (var i in addComp){
+    //             //     alert(i);            // 输出属性名：  attribute，method
+    //             //    // alert(addComp[i])        // 输出属性的值：1和函数的内容
+    //             // }
+    //             //alert(address);
+    //             //window.opener.document.getElementById('position').value=address;
+    //             //window.close();
+    //             //$('#orderform').show();$('#allmap').hide();
+    //         });
+    //     }
+    //     else {
+    //         alert('failed'+this.getStatus());
+    //     }
+    // },{enableHighAccuracy: true}) 
+}
 </script>
 </html>

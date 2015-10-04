@@ -43,8 +43,8 @@
                 //    // alert(addComp[i])        // 输出属性的值：1和函数的内容
                 // }
                 alert(address);
-                window.opener.document.getElementById('position').value=address;
-                window.close();
+                //window.opener.document.getElementById('position').value=address;
+                //window.close();
             });
         }
         else {
