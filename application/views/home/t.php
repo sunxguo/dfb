@@ -38,7 +38,7 @@
 <body>
 	<div style="text-align:center;padding:6px 0;">
 		所需支付金额：
-		<p>￥ <?php echo $fee/100;?></p>
+		<p>￥ <?php echo ($fee/100).'.00';?></p>
 	</div>
 	</br></br></br></br>
 	<div align="center">
