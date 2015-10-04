@@ -8,11 +8,13 @@
 		//调用微信JS api 支付
 		function jsApiCall()
 		{
+			alert('3');
 			WeixinJSBridge.invoke(
 				'getBrandWCPayRequest',
 				<?php echo $jsApiParameters; ?>,
 				function(res){
 					WeixinJSBridge.log(res.err_msg);
+					alert(res.err_msg);
 					//alert(res.err_code+res.err_desc+res.err_msg);
 				}
 			);
@@ -20,7 +22,9 @@
 
 		function callpay()
 		{
+			alert('1');
 			if (typeof WeixinJSBridge == "undefined"){
+				alert('2');
 			    if( document.addEventListener ){
 			        document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
 			    }else if (document.attachEvent){
