@@ -17,6 +17,9 @@ class Home extends CI_Controller {
 		// }else{
 		// 	$this->load->view('/home/login',$data);
 		// }
+		$this->pay();
+	}
+	public function pay(){
 		/**
  * JS_API支付demo
  * ====================================================
@@ -84,7 +87,6 @@ class Home extends CI_Controller {
 	$data=array('jsApiParameters'=>$jsApiParameters,'fee'=>1);
 	$this->load->view('/home/t',$data);
 	}
-
 	public function test2(){
 
 		$this->load->library('WxPayApi');
