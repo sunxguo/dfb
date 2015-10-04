@@ -19,7 +19,7 @@ class Home extends CI_Controller {
 		}
 		//$this->pay();
 	}
-	public function pay($number,$fee){
+	public function pay(){
 		/**
  * JS_API支付demo
  * ====================================================
@@ -66,7 +66,7 @@ class Home extends CI_Controller {
 	$timeStamp = time();
 	$out_trade_no = WxPayConf_pub::APPID."$timeStamp";
 	$unifiedOrder->setParameter("out_trade_no","$out_trade_no");//商户订单号 
-	$unifiedOrder->setParameter("total_fee",$fee);//总金额
+	$unifiedOrder->setParameter("total_fee",$_SESSION['fee']);//总金额
 	$unifiedOrder->setParameter("notify_url",WxPayConf_pub::NOTIFY_URL);//通知地址 
 	$unifiedOrder->setParameter("trade_type","JSAPI");//交易类型
 	//非必填参数，商户可根据实际情况选填
@@ -134,7 +134,7 @@ class Home extends CI_Controller {
 		$this->load->view('/home/location',$data);
 	}
 	public function order(){
-		if(isset($_POST['userid'])){
+		//if(isset($_POST['userid'])){
 			// $_SESSION['user']=$_POST['userid'];
 			// $_SESSION['name']=$_POST['name'];
 			// $_SESSION['licensenumber']=$_POST['licensenumber'];
@@ -162,8 +162,8 @@ class Home extends CI_Controller {
 			$this->dbHandler->insertData($table,$info);
 			$result=$this->dbHandler->updateData(array('table'=>'user','where'=>array('id'=>$_POST['userid']),'data'=>array('name'=>$_POST['name'])));
 			
-		}
-		$this->pay($_SESSION['number'],$_SESSION['fee']);
+		//}
+		$this->pay();
 		//$this->wxpay($info['number']);
 	}
 	public function testpay(){
