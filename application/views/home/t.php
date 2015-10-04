@@ -41,7 +41,7 @@
 	</div>
 	</br></br></br></br>
 	<div align="center">
-		<button style="width:210px; height:30px; background-color:#FE6714; border:0px #FE6714 solid; cursor: pointer;  color:white;  font-size:16px;" type="button" onclick="callpay()" >下单</button>
+		<button style="width:90%; height:40px;line-height:40px; background-color:#FE6714; border:0px #FE6714 solid; cursor: pointer;  color:white;  font-size:18px;" type="button" onclick="callpay()" >立即支付</button>
 	</div>
 </body>
 </html>
