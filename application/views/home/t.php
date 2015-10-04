@@ -1,6 +1,7 @@
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/> 
     <title>微信安全支付</title>
 
 	<script type="text/javascript">
@@ -37,7 +38,7 @@
 <body>
 	<div style="text-align:center;padding:6px 0;">
 		所需支付金额：
-		<p>￥ <?php echo $fee;?></p>
+		<p>￥ <?php echo $fee/100;?></p>
 	</div>
 	</br></br></br></br>
 	<div align="center">
