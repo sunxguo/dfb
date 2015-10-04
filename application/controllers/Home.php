@@ -59,7 +59,7 @@ class Home extends CI_Controller {
 		$this->wxpay($_SESSION['number'],$_SESSION['fee']);
 		//$this->wxpay($info['number']);
 	}
-	public function wxpay(){//$number,$fee
+	public function wxpay($number,$fee){
 		$this->load->library('WxPayApi');
 		$this->load->library('JsApiPay');
 		//①、获取用户openid
