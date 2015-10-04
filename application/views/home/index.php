@@ -18,7 +18,7 @@
 	<div class="layer">
 		<form action="/home/order" onsubmit="return checkOrder();" method="post" enctype="multipart/form-data">
 			<input id="userid" name="userid" type="hidden" value="<?php echo $_SESSION['userid'];?>">
-			<input id="fee" name="fee" type="hidden" value="1">
+			<input id="fee" name="fee" type="hidden" value="1500">
 			<ul class="input-field">
 				<li class="input-field-item">
 					<div class="field-icon">
