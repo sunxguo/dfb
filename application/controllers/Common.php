@@ -130,10 +130,10 @@ class Common extends CI_Controller {
 				$_SESSION["mobilecode"];
 			break;
 			case 'login':
-				if($data->authcode!=$_SESSION["mobilecode"]){
-					echo json_encode(array("result"=>"failed","message"=>'验证码输入错误！'));
-					return false;
-				}
+				// if($data->authcode!=$_SESSION["mobilecode"]){
+				// 	echo json_encode(array("result"=>"failed","message"=>'验证码输入错误！'));
+				// 	return false;
+				// }
 				$result=$this->getdata->getContentAdvance('user',array('phone'=>$data->phone));
 				if(!property_exists($result, 'phone')){
 					//插入用户信息

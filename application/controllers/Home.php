@@ -11,11 +11,12 @@ class Home extends CI_Controller {
 
 	public function index(){
 		$data=array();
-		if(isset($_SESSION['userid'])){
-			$this->load->view('/home/index',$data);
-		}else{
-			$this->load->view('/home/login',$data);
-		}
+		$this->load->view('/home/index',$data);
+		// if(isset($_SESSION['userid'])){
+		// 	$this->load->view('/home/index',$data);
+		// }else{
+		// 	$this->load->view('/home/login',$data);
+		// }
 	}
 	public function login(){
 		$data=array();

@@ -44,8 +44,8 @@
                 // }
                 alert(address);
                 window.opener.document.getElementById('position').value=address;
+                window.close();
             });
-            window.close();
         }
         else {
             alert('failed'+this.getStatus());

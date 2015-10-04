@@ -68,9 +68,11 @@ ul.input-field li:last-child{
 }
 .input-field .field-input{
 	display: inline-block;
+	width: 60%;
 }
-.input-field .field-input input{
+.input-field .field-input input[type=text]{
 	color: #999;
+	width: 100%;
 }
 input[type=checkbox]{
 	width: 10px;
