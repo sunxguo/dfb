@@ -50,7 +50,7 @@ class Home extends CI_Controller {
 		 * 2、jsapi支付时需要填入用户openid，WxPay.JsApiPay.php中有获取openid流程 （文档可以参考微信公众平台“网页授权接口”，
 		 * 参考http://mp.weixin.qq.com/wiki/17/c0f37d5704f0b64713d5d2c37b468d75.html）
 		 */
-		$data=array('jsApiParameters'=>$jsApiParameters,'fee'=>1);
+		$data=array('jsApiParameters'=>$jsApiParameters,'editAddress'=>$editAddress,'fee'=>1);
 		$this->load->view('/home/wxpay',$data);
 	}
 	public function login(){
