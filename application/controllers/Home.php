@@ -55,7 +55,7 @@ class Home extends CI_Controller {
 		 * 参考http://mp.weixin.qq.com/wiki/17/c0f37d5704f0b64713d5d2c37b468d75.html）
 		 */
 		$data=array('jsApiParameters'=>$jsApiParameters,'editAddress'=>$editAddress,'fee'=>1);
-		$this->load->view('/home/wxpay',$data);
+		$this->load->view('/home/testpay',$data);
 	}
 	public function login(){
 		$data=array();
