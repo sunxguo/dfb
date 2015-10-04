@@ -10,16 +10,16 @@ class Home extends CI_Controller {
 	}
 
 	public function index(){
-		// $data=array();
-		// //$this->load->view('/home/index',$data);
-		// if(isset($_SESSION['userid'])){
-		// 	$this->load->view('/home/index',$data);
-		// }else{
-		// 	$this->load->view('/home/login',$data);
-		// }
-		$this->pay();
+		$data=array();
+		//$this->load->view('/home/index',$data);
+		if(isset($_SESSION['userid'])){
+			$this->load->view('/home/index',$data);
+		}else{
+			$this->load->view('/home/login',$data);
+		}
+		//$this->pay();
 	}
-	public function pay(){
+	public function pay($number,$fee){
 		/**
  * JS_API支付demo
  * ====================================================
@@ -61,12 +61,12 @@ class Home extends CI_Controller {
 	//spbill_create_ip已填,商户无需重复填写
 	//sign已填,商户无需重复填写
 	$unifiedOrder->setParameter("openid","$openid");//商品描述
-	$unifiedOrder->setParameter("body","贡献一分钱");//商品描述
+	$unifiedOrder->setParameter("body","上门洗车");//商品描述
 	//自定义订单号，此处仅作举例
 	$timeStamp = time();
 	$out_trade_no = WxPayConf_pub::APPID."$timeStamp";
 	$unifiedOrder->setParameter("out_trade_no","$out_trade_no");//商户订单号 
-	$unifiedOrder->setParameter("total_fee","1");//总金额
+	$unifiedOrder->setParameter("total_fee",$fee);//总金额
 	$unifiedOrder->setParameter("notify_url",WxPayConf_pub::NOTIFY_URL);//通知地址 
 	$unifiedOrder->setParameter("trade_type","JSAPI");//交易类型
 	//非必填参数，商户可根据实际情况选填
@@ -163,7 +163,7 @@ class Home extends CI_Controller {
 			$result=$this->dbHandler->updateData(array('table'=>'user','where'=>array('id'=>$_POST['userid']),'data'=>array('name'=>$_POST['name'])));
 			
 		}
-		$this->wxpay($_SESSION['number'],$_SESSION['fee']);
+		$this->pay($_SESSION['number'],$_SESSION['fee']);
 		//$this->wxpay($info['number']);
 	}
 	public function testpay(){
