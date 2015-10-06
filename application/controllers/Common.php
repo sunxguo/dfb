@@ -144,7 +144,7 @@ class Common extends CI_Controller {
 					$_SESSION["userid"]=$result->id;
 				}
 				if(property_exists($result, 'name')){
-					$_SESSION["name"]=$data->name;
+					$_SESSION["name"]=$result->name;
 				}else{
 					$_SESSION["name"]='';
 				}
