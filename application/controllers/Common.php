@@ -134,17 +134,15 @@ class Common extends CI_Controller {
 				// 	echo json_encode(array("result"=>"failed","message"=>'验证码输入错误！'));
 				// 	return false;
 				// }
-				$result=$this->getdata->getContentAdvance('user',array('phone'=>$data->phone));
+				$_SESSION["phone"]=$data->phone;
+				$result=$this->getdata->getContentAdvance('user',array('phone'=>$_SESSION["phone"]));
 				if(!property_exists($result, 'phone')){
 					//插入用户信息
-					$userid=$this->dbHandler->insertDataReturnId('user',array(
-						'phone'=>$data->phone
-					));
-					$_SESSION["userid"]=$userid;
+					$userid=$this->dbHandler->insertDataReturnId('user',array('phone'=>$_SESSION["phone"]));
+				 	$_SESSION["userid"]=$userid;
 				}else{
 					$_SESSION["userid"]=$result->id;
 				}
-				$_SESSION["phone"]=$data->phone;
 				if(property_exists($result, 'name')){
 					$_SESSION["name"]=$data->name;
 				}else{

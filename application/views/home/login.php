@@ -51,7 +51,7 @@ function login(){
 	login.infoType = 'login';
 	login.phone = $("#phone").val();
 	login.authcode = $("#authcode").val();
-	dataHandler("/common/getInfo",login,null,null,null,successLogin(),false,true);
+	dataHandler("/common/getInfo",login,null,null,null,successLogin,false,true);
 }
 function successLogin(){
 	location.href="/home";
