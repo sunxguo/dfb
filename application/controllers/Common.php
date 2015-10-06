@@ -138,7 +138,7 @@ class Common extends CI_Controller {
 				$result=$this->getdata->getContentAdvance('user',array('phone'=>$_SESSION["phone"]));
 				if(!property_exists($result, 'phone')){
 					//插入用户信息
-					$userid=$this->dbHandler->insertDataReturnId('user',array('phone'=>$_SESSION["phone"]));
+					$userid=$this->dbHandler->insertDataReturnId('user',array('phone'=>$_SESSION["phone"],'time'=>date("Y-m-d H:i:s")));
 				 	$_SESSION["userid"]=$userid;
 				}else{
 					$_SESSION["userid"]=$result->id;

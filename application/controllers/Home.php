@@ -21,110 +21,110 @@ class Home extends CI_Controller {
 	}
 	public function pay(){
 		/**
- * JS_API支付demo
- * ====================================================
- * 在微信浏览器里面打开H5网页中执行JS调起支付。接口输入输出数据格式为JSON。
- * 成功调起支付需要三个步骤：
- * 步骤1：网页授权获取用户openid
- * 步骤2：使用统一支付接口，获取prepay_id
- * 步骤3：使用jsapi调起支付
-*/
-	$this->load->helper("wxpay");
-	
-	//使用jsapi接口
-	$jsApi = new JsApi_pub();
+		 * JS_API支付demo
+		 * ====================================================
+		 * 在微信浏览器里面打开H5网页中执行JS调起支付。接口输入输出数据格式为JSON。
+		 * 成功调起支付需要三个步骤：
+		 * 步骤1：网页授权获取用户openid
+		 * 步骤2：使用统一支付接口，获取prepay_id
+		 * 步骤3：使用jsapi调起支付
+		*/
+		$this->load->helper("wxpay");
+		
+		//使用jsapi接口
+		$jsApi = new JsApi_pub();
 
-	//=========步骤1：网页授权获取用户openid============
-	//通过code获得openid
-	if (!isset($_GET['code']))
-	{
-		//触发微信返回code码
-		$url = $jsApi->createOauthUrlForCode(WxPayConf_pub::JS_API_CALL_URL);
-		Header("Location: $url"); 
-	}else
-	{
-		//获取code码，以获取openid
-	    $code = $_GET['code'];
-		$jsApi->setCode($code);
-		$openid = $jsApi->getOpenId();
+		//=========步骤1：网页授权获取用户openid============
+		//通过code获得openid
+		if (!isset($_GET['code']))
+		{
+			//触发微信返回code码
+			$url = $jsApi->createOauthUrlForCode(WxPayConf_pub::JS_API_CALL_URL);
+			Header("Location: $url"); 
+		}else
+		{
+			//获取code码，以获取openid
+		    $code = $_GET['code'];
+			$jsApi->setCode($code);
+			$openid = $jsApi->getOpenId();
+		}
+		
+		//=========步骤2：使用统一支付接口，获取prepay_id============
+		//使用统一支付接口
+		$unifiedOrder = new UnifiedOrder_pub();
+		
+		//设置统一支付接口参数
+		//设置必填参数
+		//appid已填,商户无需重复填写
+		//mch_id已填,商户无需重复填写
+		//noncestr已填,商户无需重复填写
+		//spbill_create_ip已填,商户无需重复填写
+		//sign已填,商户无需重复填写
+		$unifiedOrder->setParameter("openid","$openid");//商品描述
+		$unifiedOrder->setParameter("body","上门洗车");//商品描述
+		//自定义订单号，此处仅作举例
+		$timeStamp = time();
+		//$out_trade_no = WxPayConf_pub::APPID."$timeStamp";
+		$unifiedOrder->setParameter("out_trade_no",$_SESSION['number']);//商户订单号 
+		$unifiedOrder->setParameter("total_fee",$_SESSION['fee']);//总金额
+		$unifiedOrder->setParameter("notify_url",WxPayConf_pub::NOTIFY_URL);//通知地址 
+		$unifiedOrder->setParameter("trade_type","JSAPI");//交易类型
+		//非必填参数，商户可根据实际情况选填
+		//$unifiedOrder->setParameter("sub_mch_id","XXXX");//子商户号  
+		//$unifiedOrder->setParameter("device_info","XXXX");//设备号 
+		//$unifiedOrder->setParameter("attach","XXXX");//附加数据 
+		//$unifiedOrder->setParameter("time_start","XXXX");//交易起始时间
+		//$unifiedOrder->setParameter("time_expire","XXXX");//交易结束时间 
+		//$unifiedOrder->setParameter("goods_tag","XXXX");//商品标记 
+		//$unifiedOrder->setParameter("openid","XXXX");//用户标识
+		//$unifiedOrder->setParameter("product_id","XXXX");//商品ID
+
+		$prepay_id = $unifiedOrder->getPrepayId();
+		//=========步骤3：使用jsapi调起支付============
+		$jsApi->setPrepayId($prepay_id);
+
+		$jsApiParameters = $jsApi->getParameters();
+		$data=array('jsApiParameters'=>$jsApiParameters,'fee'=>$_SESSION['fee']);
+		$this->load->view('/home/t',$data);
 	}
-	
-	//=========步骤2：使用统一支付接口，获取prepay_id============
-	//使用统一支付接口
-	$unifiedOrder = new UnifiedOrder_pub();
-	
-	//设置统一支付接口参数
-	//设置必填参数
-	//appid已填,商户无需重复填写
-	//mch_id已填,商户无需重复填写
-	//noncestr已填,商户无需重复填写
-	//spbill_create_ip已填,商户无需重复填写
-	//sign已填,商户无需重复填写
-	$unifiedOrder->setParameter("openid","$openid");//商品描述
-	$unifiedOrder->setParameter("body","上门洗车");//商品描述
-	//自定义订单号，此处仅作举例
-	$timeStamp = time();
-	$out_trade_no = WxPayConf_pub::APPID."$timeStamp";
-	$unifiedOrder->setParameter("out_trade_no","$out_trade_no");//商户订单号 
-	$unifiedOrder->setParameter("total_fee",$_SESSION['fee']);//总金额
-	$unifiedOrder->setParameter("notify_url",WxPayConf_pub::NOTIFY_URL);//通知地址 
-	$unifiedOrder->setParameter("trade_type","JSAPI");//交易类型
-	//非必填参数，商户可根据实际情况选填
-	//$unifiedOrder->setParameter("sub_mch_id","XXXX");//子商户号  
-	//$unifiedOrder->setParameter("device_info","XXXX");//设备号 
-	//$unifiedOrder->setParameter("attach","XXXX");//附加数据 
-	//$unifiedOrder->setParameter("time_start","XXXX");//交易起始时间
-	//$unifiedOrder->setParameter("time_expire","XXXX");//交易结束时间 
-	//$unifiedOrder->setParameter("goods_tag","XXXX");//商品标记 
-	//$unifiedOrder->setParameter("openid","XXXX");//用户标识
-	//$unifiedOrder->setParameter("product_id","XXXX");//商品ID
+	// public function test2(){
 
-	$prepay_id = $unifiedOrder->getPrepayId();
-	//=========步骤3：使用jsapi调起支付============
-	$jsApi->setPrepayId($prepay_id);
+	// 	$this->load->library('WxPayApi');
+	// 	$this->load->library('JsApiPay');
+	// 	//①、获取用户openid
+	// 	$tools = $this->jsapipay;
+	// 	$openId = $tools->GetOpenid();
 
-	$jsApiParameters = $jsApi->getParameters();
-	$data=array('jsApiParameters'=>$jsApiParameters,'fee'=>$_SESSION['fee']);
-	$this->load->view('/home/t',$data);
-	}
-	public function test2(){
+	// 	//②、统一下单
+	// 	$input = new WxPayUnifiedOrder();
+	// 	$input->SetBody("test");
+	// 	$input->SetAttach("test");
+	// 	$input->SetOut_trade_no(WxPayConfig::MCHID.date("YmdHis"));
+	// 	$input->SetTotal_fee(1);
+	// 	$input->SetTime_start(date("YmdHis"));
+	// 	$input->SetTime_expire(date("YmdHis", time() + 600));
+	// 	$input->SetGoods_tag("test");
+	// 	$input->SetNotify_url("http://dfb.fengdukeji.com/common/wxpaynotify");
+	// 	$input->SetTrade_type("JSAPI");
+	// 	$input->SetOpenid($openId);
+	// 	$order = $this->wxpayapi->unifiedOrder($input);
+	// 	// echo '<font color="#f00"><b>统一下单支付单信息</b></font><br/>';
+	// 	// print_r($order);
+	// 	$jsApiParameters = $tools->GetJsApiParameters($order);
 
-		$this->load->library('WxPayApi');
-		$this->load->library('JsApiPay');
-		//①、获取用户openid
-		$tools = $this->jsapipay;
-		$openId = $tools->GetOpenid();
+	// 	//获取共享收货地址js函数参数
+	// 	$editAddress = $tools->GetEditAddressParameters();
 
-		//②、统一下单
-		$input = new WxPayUnifiedOrder();
-		$input->SetBody("test");
-		$input->SetAttach("test");
-		$input->SetOut_trade_no(WxPayConfig::MCHID.date("YmdHis"));
-		$input->SetTotal_fee(1);
-		$input->SetTime_start(date("YmdHis"));
-		$input->SetTime_expire(date("YmdHis", time() + 600));
-		$input->SetGoods_tag("test");
-		$input->SetNotify_url("http://dfb.fengdukeji.com/common/wxpaynotify");
-		$input->SetTrade_type("JSAPI");
-		$input->SetOpenid($openId);
-		$order = $this->wxpayapi->unifiedOrder($input);
-		// echo '<font color="#f00"><b>统一下单支付单信息</b></font><br/>';
-		// print_r($order);
-		$jsApiParameters = $tools->GetJsApiParameters($order);
-
-		//获取共享收货地址js函数参数
-		$editAddress = $tools->GetEditAddressParameters();
-
-		//③、在支持成功回调通知中处理成功之后的事宜，见 notify.php
-		/**
-		 * 注意：
-		 * 1、当你的回调地址不可访问的时候，回调通知会失败，可以通过查询订单来确认支付是否成功
-		 * 2、jsapi支付时需要填入用户openid，WxPay.JsApiPay.php中有获取openid流程 （文档可以参考微信公众平台“网页授权接口”，
-		 * 参考http://mp.weixin.qq.com/wiki/17/c0f37d5704f0b64713d5d2c37b468d75.html）
-		 */
-		$data=array('jsApiParameters'=>$jsApiParameters,'editAddress'=>$editAddress,'fee'=>1);
-		$this->load->view('/home/testpay',$data);
-	}
+	// 	//③、在支持成功回调通知中处理成功之后的事宜，见 notify.php
+	// 	/**
+	// 	 * 注意：
+	// 	 * 1、当你的回调地址不可访问的时候，回调通知会失败，可以通过查询订单来确认支付是否成功
+	// 	 * 2、jsapi支付时需要填入用户openid，WxPay.JsApiPay.php中有获取openid流程 （文档可以参考微信公众平台“网页授权接口”，
+	// 	 * 参考http://mp.weixin.qq.com/wiki/17/c0f37d5704f0b64713d5d2c37b468d75.html）
+	// 	 */
+	// 	$data=array('jsApiParameters'=>$jsApiParameters,'editAddress'=>$editAddress,'fee'=>1);
+	// 	$this->load->view('/home/testpay',$data);
+	// }
 	public function login(){
 		$data=array();
 		$this->load->view('/home/login',$data);
