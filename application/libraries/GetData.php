@@ -129,6 +129,25 @@ class GetData{
 		);
 		return $page;
 	}
+	public function getOrders($parameters){
+		$condition=array(
+			'table'=>'order',
+			'result'=>$parameters['result']
+		);
+		if(isset($parameters['limit'])){
+			$condition['limit']=$parameters['limit'];
+		}
+		if(isset($parameters['orderBy'])){
+			$condition['order_by']=$parameters['orderBy'];
+		}
+		$orders=$this->getData($condition);
+		if($parameters['result']=='data'){
+			foreach ($orders as $key => $value) {
+				$value->user=$this->getContent('user',$value->user);
+			}
+		}
+		return $orders;
+	}
 	public function getEssays($parameters){
 		$condition=array(
 			'table'=>'essay',

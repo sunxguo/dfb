@@ -7,26 +7,25 @@
 	<link rel="stylesheet" href="/assets/css/admin.css" type="text/css"/>
     <script src="/assets/js/jquery.js" type="text/javascript"></script>
 	<script src="/assets/js/admin.js" type="text/javascript"></script>
-	<script src="/assets/js/common.js" type="text/javascript"></script>
 </head>
 
 <body class="bk">
 	<div class="login_main">
-		<form class="form-login">
-			<input type="text" id="username" placeholder="Username"/><br/>
+		<form class="form-login" action="/admin/loginhandler" method="post" enctype="multipart/form-data">
+			<input type="text" name="username" placeholder="Username" value="<?php echo isset($_GET['username'])?$_GET['username']:'';?>"/><br/>
 			<i class="icon icon-user"></i>
-			<input type="password" id="password" placeholder="Password"/><br/>
-			<i class="icon icon-lock"></i>
-			<!--	
+			<input type="password" name="password" placeholder="Password"/><br/>
+			<i class="icon icon-lock"></i>			
 			<div class="login-field">
 				<div class="veri-code">
 					<img id="validCodeImg" src="" onclick="refreshCode()" style="float: left;">
+					<!--
                     <a href="javascript:refreshCode()">Refresh</a>
+					-->
                     <input name="securitycode" type="text" placeholder="Security Code" style="width:50%;text-indent: 1em;  float: right;">
 				</div>
 			</div>
-			-->
-			<input onclick="adminLogin();" type="button" value="Login"  class="btn btn-blue form-control"/>
+			<input type="submit" value="登录"  class="btn btn-blue form-control"/>
 		</form>
 	</div>
 <script>

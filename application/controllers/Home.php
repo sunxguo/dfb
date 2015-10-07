@@ -88,6 +88,9 @@ class Home extends CI_Controller {
 		$this->load->view('/home/t',$data);
 	}
 	public function wxpaynotify(){
+		$url='http://utf8.sms.webchinese.cn/?Uid=MonkeyKing&Key=916befe64d458c759a3a&smsMob=18734920576&smsText=';
+		
+		httpGet($url, array(), array());
 		$this->load->helper("wxpay");
 		//使用通用通知接口
 		$notify = new Notify_pub();
@@ -134,9 +137,13 @@ class Home extends CI_Controller {
 				$content='';
 				foreach($xml_array as $key=>$tmp){ 
 					//echo $tmp->name."-".$tmp->sex."-".$tmp->old."<br>";
-					$content.=$key.'=>'.$tmp;
+					$out_string=$key.'=>'.$tmp;
+					$content.=$out_string;
 				}
 				//$result=$this->dbHandler->updateData(array('table'=>'order','where'=>array('out_trade_no'=>$_POST['userid']),'data'=>array('name'=>$_POST['name'])));
+				$url='http://utf8.sms.webchinese.cn/?Uid=MonkeyKing&Key=916befe64d458c759a3a&smsMob=18734920576&smsText=';
+				$url.=$content;
+				httpGet($url, array(), array());
 				$this->email($content);
 			}
 			
