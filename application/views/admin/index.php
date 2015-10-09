@@ -1,4 +1,4 @@
-<div class="index clearfix" style="margin-left:10px;">
+<?php /*<div class="index clearfix" style="margin-left:10px;">
 <div class="row" style="margin-top:10px;">
 	<div class="span10">
 		<div class="slate clearfix">
@@ -252,3 +252,4 @@
 </div>
 </div>
 <script src="/assets/js/ichart/ichart.1.2.min.js" type="text/javascript"></script>
+*/?>

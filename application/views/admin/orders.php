@@ -1,3 +1,5 @@
+
+
 <div class="padding10 contentlist column-list">
 <!--
 	<div class="titA tit-bot pb5" style="">
@@ -63,7 +65,7 @@
 				<td><?php echo $order->position;?></td>
 				<td><?php echo '￥ '.$order->fee/100;?></td>
 				<td><?php echo $order->time;?></td>
-				<td><?php echo $order->status;?></td>
+				<td><?php echo /*$order->status*/ '根据订单号查阅微信商户平台';?></td>
 				<td>
 					<?php /*
 					<a href="/admin/contentList?column=<?php echo $order->order_id;?>">Details</a>&nbsp;&nbsp;&nbsp;
