@@ -54,6 +54,7 @@ class GetData{
 	}
 	public function getAllWashType(){
 		$data=array(
+			'0'=>'洗完付款',
 			'1'=>'小车外洗10元',
 			'2'=>'小车内外洗15元',
 			'3'=>'越野外洗15元',
