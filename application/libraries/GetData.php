@@ -30,19 +30,19 @@ class GetData{
 		$data=array();
 		switch ($code) {
 			case '1':
-				$data['fee']=10;
+				$data['fee']=1000;
 				$data['type']='小车外洗10元';
 				break;
 			case '2':
-				$data['fee']=15;
+				$data['fee']=1500;
 				$data['type']='小车内外洗15元';
 				break;
 			case '3':
-				$data['fee']=15;
+				$data['fee']=1500;
 				$data['type']='越野外洗15元';
 				break;
 			case '4':
-				$data['fee']=20;
+				$data['fee']=2000;
 				$data['type']='越野内外洗20元';
 				break;
 		}

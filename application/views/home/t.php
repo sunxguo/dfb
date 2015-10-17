@@ -42,7 +42,7 @@
 <body>
 	<div style="text-align:center;padding:50px 0 20px 0;">
 		<p style="color:#777;">所需支付金额:</p>
-		<p style="font-weight:600;">￥ <?php echo ($fee);?></p>
+		<p style="font-weight:600;">￥ <?php echo ($fee/100).'.00';?></p>
 	</div>
 	<div align="center">
 		<button style="width:90%; height:40px;line-height:40px; background-color:#FE6714; border:0px #FE6714 solid; cursor: pointer;  color:white;  font-size:18px;" type="button" onclick="callpay()" >立即支付</button>
