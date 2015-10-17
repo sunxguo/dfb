@@ -231,7 +231,9 @@ class Home extends CI_Controller {
 			// $_SESSION['color']=$_POST['color'];
 			// $_SESSION['position']=$_POST['position'];
 			// $_SESSION['note']=$_POST['note'];
-			$_SESSION['fee']=$_POST['fee'];
+			$fee=15;
+			$washType=$this->getdata->getWashType($_POST['washtype']);
+			$_SESSION['fee']=$washType['fee'];
 			$_SESSION['number']=$this->createOrderNumber();
 			// $_SESSION['time']=date("Y-m-d H:i:s");
 			$table="order";
@@ -244,7 +246,8 @@ class Home extends CI_Controller {
 				"position"=>$_POST['position'],
 				// "trim"=>$_POST['trim']?1:0,
 				"note"=>$_POST['note'],
-				"fee"=>$_POST['fee'],
+				"fee"=>$fee,
+				"washtype"=>$_POST['washtype'],
 				"number"=>$_SESSION['number'],
 				"time"=>date("Y-m-d H:i:s")
 			);

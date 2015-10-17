@@ -140,7 +140,8 @@ class Admin extends CI_Controller {
 			'orderBy'=>array('time'=>'DESC')
 		);
 		$orders=array('orders'=>$this->getdata->getOrders($parameters));
-		$data=array_merge($pageInfo,$orders);
+		$washTypes=array('washTypes'=>$this->getdata->getAllWashType());
+		$data=array_merge($pageInfo,$orders,$washTypes);
 		$this->adminBaseHandler('订单管理',array('data'=>true,'order'=>true),'orders',$data);
 	}
 	public function home(){

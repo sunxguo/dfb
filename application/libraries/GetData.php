@@ -26,6 +26,37 @@ class GetData{
 			return $newArray;
 		}
 	}
+	public function getWashType($code){
+		$data=array();
+		switch ($code) {
+			case '1':
+				$data['fee']=10;
+				$data['type']='小车外洗10元';
+				break;
+			case '2':
+				$data['fee']=15;
+				$data['type']='小车内外洗15元';
+				break;
+			case '3':
+				$data['fee']=15;
+				$data['type']='越野外洗15元';
+				break;
+			case '4':
+				$data['fee']=20;
+				$data['type']='越野内外洗20元';
+				break;
+		}
+		return $data;
+	}
+	public function getAllWashType(){
+		$data=array(
+			'1'=>'小车外洗10元',
+			'2'=>'小车内外洗15元',
+			'3'=>'越野外洗15元',
+			'4'=>'越野内外洗20元'
+		);
+		return $data;
+	}
 	public function language($type='home'){
 		$this->CI->load->helper('language');
 		if(isset($_SESSION['language'])){

@@ -93,10 +93,16 @@
 						<img src="/assets/images/car/u144.png" width="26" height="23">
 					</div>
 					<div class="field-name">
-						内饰
+						类型
 					</div>
 					<div class="field-input">
-						<label for="trim">车内简洗（需在车旁等待）</label><input id="trim" name="trim[]" value="has" type="checkbox">
+						<!--<label for="trim">车内简洗（需在车旁等待）</label><input id="trim" name="trim[]" value="has" type="checkbox">-->
+						<select name="washtype">
+							<option value="1">小车外洗10元</option>
+							<option value="2">小车内外洗15元</option>
+							<option value="3">越野外洗15元</option>
+							<option value="4">越野内外洗20元</option>
+						</select>
 					</div>
 				</li>
 				<li class="input-field-item">

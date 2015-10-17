@@ -63,7 +63,7 @@
 				<td><?php echo $order->type;?></td>
 				<td><?php echo $order->color;?></td>
 				<td><?php echo $order->position;?></td>
-				<td><?php echo '￥ '.$order->fee/100;?></td>
+				<td><?php echo $washTypes[$order->washtype];?></td>
 				<td><?php echo $order->time;?></td>
 				<td><?php echo /*$order->status*/ '根据订单号查阅微信商户平台';?></td>
 				<td>
