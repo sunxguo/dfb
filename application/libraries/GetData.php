@@ -45,6 +45,10 @@ class GetData{
 				$data['fee']=2000;
 				$data['type']='越野内外洗20元';
 				break;
+			case '0':
+				$data['fee']=0;
+				$data['type']='洗完付款';
+				break;
 		}
 		return $data;
 	}

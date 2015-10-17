@@ -102,6 +102,7 @@
 							<option value="2">小车内外洗15元</option>
 							<option value="3">越野外洗15元</option>
 							<option value="4">越野内外洗20元</option>
+							<option value="0">洗完付款</option>
 						</select>
 					</div>
 				</li>
