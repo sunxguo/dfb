@@ -258,7 +258,7 @@ class Home extends CI_Controller {
 		if($_POST['washtype']!=0){
 			$this->pay();
 		}else{
-			echo '<script>alert("下单成功！");location.reload();</script>';
+			echo '<script>alert("下单成功！");history.go(-1);</script>';
 		}
 		//$this->wxpay($info['number']);
 	// }
