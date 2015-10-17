@@ -255,7 +255,11 @@ class Home extends CI_Controller {
 			$result=$this->dbHandler->updateData(array('table'=>'user','where'=>array('id'=>$_POST['userid']),'data'=>array('name'=>$_POST['name'])));
 			
 		}
-		$this->pay();
+		if($_POST['washtype']!=0){
+			$this->pay();
+		}else{
+			echo '<script>alert("下单成功！");location.reload();</script>';
+		}
 		//$this->wxpay($info['number']);
 	// }
 	// public function testpay(){
